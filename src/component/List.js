@@ -9,28 +9,44 @@ const List = () => {
 
     const [input, setInput] = useState("");
 
+    const [task, setTask] = useState([]);
+
     const changeHandler = (event) => {
         setInput(event.target.value)
     }
+
+    const clickHandler = (e) => {
+        e.preventDefault();
+
+        if (input.length === 0) {
+            alert("Write something !")
+        } else {
+            setTask(newTask => [...newTask, input])
+        }
+
+        setInput("");
+    }
+
 
     return (
         <div className={styles.container}>
             <div className={styles.top}>
                 <h1>My to do list</h1>
             </div>
-            <div className={styles.addNew}>
-                <h2>Add anything you want to do</h2>
-                <input type="text" value={input} placeholder="write just here..." onChange={changeHandler}/>
-                <button>Add</button>
-            </div>
-            <div className={styles.task}>
-                <h2>You have 3 tasks remaining</h2>
-                <ul className={styles.newTask}>
-                    <Todo name="test1" />
-                    <Todo name="test2"/>
-                    <Todo name="test3"/>
-                </ul>
-            </div>
+            <form>
+                <div className={styles.addNew}>
+                    <h2>Add anything you want to do</h2>
+                    <input name="task" value={input} type="text" placeholder="write just here..."
+                           onChange={changeHandler}/>
+                    <button onClick={clickHandler} type="submit">Add</button>
+                </div>
+                <div className={styles.task}>
+                    <h2>You have 4 tasks remaining</h2>
+                    <ul className={styles.newTask}>
+                        {task.map(newList => <Todo key={newList} name={newList}/>)}
+                    </ul>
+                </div>
+            </form>
         </div>
     );
 };
