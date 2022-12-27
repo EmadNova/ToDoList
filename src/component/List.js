@@ -27,16 +27,11 @@ const List = () => {
         setInput("");
     }
 
-    const onDelete = (task, e) => {
-
-        console.log(setTask)
+    const onDelete = (e, value) => {
 
         e.preventDefault();
 
-        console.log(task)
-
-        setTask(task.filter(deleteTask => task !== task));
-
+        setTask(task.filter(deleteTask => task[value] !== deleteTask));
     }
 
     return (
@@ -52,9 +47,9 @@ const List = () => {
                     <button onClick={clickHandler} type="submit">Add</button>
                 </div>
                 <div className={styles.task}>
-                    <h2>You have 4 tasks remaining</h2>
+                    <h2>You have {task.length} tasks remaining</h2>
                     <ul className={styles.newTask}>
-                        {task.map(newList => <Todo key={newList} name={newList} data={onDelete} />)}
+                        {task.map((newList, value) => <Todo key={value} name={newList} data={(e) => onDelete(e,value)}/>)}
                     </ul>
                 </div>
             </form>

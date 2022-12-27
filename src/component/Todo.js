@@ -7,7 +7,6 @@ import styles from "./Todo.module.scss";
 const Todo = (props) => {
 
 
-
     return (
         <div className={styles.containerTask}>
             <li>
