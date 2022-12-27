@@ -6,9 +6,6 @@ import styles from "./Todo.module.scss";
 
 const Todo = (props) => {
 
-    const deleteClick = () => {
-
-    }
 
 
     return (
@@ -18,7 +15,7 @@ const Todo = (props) => {
                 <label>{props.name}</label>
                 <div className={styles.taskBTN}>
                     <button>Edit</button>
-                    <button onClick={deleteClick} >Delete</button>
+                    <button onClick={props.data} >Delete</button>
                 </div>
             </li>
         </div>

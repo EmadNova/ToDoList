@@ -27,6 +27,17 @@ const List = () => {
         setInput("");
     }
 
+    const onDelete = (task, e) => {
+
+        console.log(setTask)
+
+        e.preventDefault();
+
+        console.log(task)
+
+        setTask(task.filter(deleteTask => task !== task));
+
+    }
 
     return (
         <div className={styles.container}>
@@ -43,7 +54,7 @@ const List = () => {
                 <div className={styles.task}>
                     <h2>You have 4 tasks remaining</h2>
                     <ul className={styles.newTask}>
-                        {task.map(newList => <Todo key={newList} name={newList}/>)}
+                        {task.map(newList => <Todo key={newList} name={newList} data={onDelete} />)}
                     </ul>
                 </div>
             </form>
