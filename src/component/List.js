@@ -37,13 +37,14 @@ const List = () => {
         setTask(task.filter(deleteTask => task[value] !== deleteTask));
     }
 
-    const inputUpdate = (updatedInput, value) => {
-        task.map(updatedInput, value => {
-            if (value === value) {
-                value = updatedInput
-            }
-            return value;
-        })
+    const inputUpdate = (updatedInput, id) => {
+        setTask(task.map((updatedInput, id) => {
+                if (id === id) {
+                    id = updatedInput
+                }
+                return id;
+            })
+        )
     }
 
 
@@ -55,13 +56,15 @@ const List = () => {
             <form>
                 <div className={styles.addNew}>
                     <h2>Add anything you want to do</h2>
-                    <input name="task" value={input} type="text" placeholder="write just here..." onChange={changeHandler}/>
+                    <input name="task" value={input} type="text" placeholder="write just here..."
+                           onChange={changeHandler}/>
                     <button onClick={clickHandler} type="submit">Add</button>
                 </div>
                 <div className={styles.task}>
                     <h2>You have {task.length} tasks remaining</h2>
                     <ul className={styles.newTask}>
-                        {task.map((newList, value) => <Todo key={value} name={newList} inputUpdate = {inputUpdate} data={(e) => onDelete(e, value)} checkData={task}/>)}
+                        {task.map((newList, value) => <Todo key={value} name={newList} inputUpdate={inputUpdate}
+                                                            data={(e) => onDelete(e, value)} checkData={task}/>)}
                     </ul>
                 </div>
             </form>
