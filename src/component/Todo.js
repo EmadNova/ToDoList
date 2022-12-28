@@ -6,20 +6,15 @@ import styles from "./Todo.module.scss";
 
 const Todo = (props) => {
 
-    // const [checked, setChecked] = useState([]);
+    const [checked, setChecked] = useState(false);
 
     const [editing, setEditing] = useState(false);
 
-    // const checkHandler = (e) => {
-    //
-    //     if (setChecked(e.target.checked)) {
-    //
-    //         const updateList = [...checked, setChecked];
-    //
-    //     } else {
-    //
-    //     }
-    // }
+
+    const checkHandler = (e) => {
+        setChecked(!e.target.checked)
+
+    }
 
     const editHandler = (e) => {
         e.preventDefault()
@@ -39,14 +34,19 @@ const Todo = (props) => {
     const clickChange = (e) => {
         e.preventDefault()
 
-        setEditing(false);
+        if (props.name.length === 0) {
+            alert("Write something !")
+        } else {
+            setEditing(false);
+        }
+
 
     }
 
     return (
         <div className={styles.containerTask}>
             <li>
-                <input type="checkbox"/>
+                <input onClick={checkHandler} className={checked ? styles.labelActive : ""} type="checkbox"/>
                 <label>{props.name}</label>
                 <div className={styles.taskBTN} style={viewMode}>
                     <button onClick={editHandler}>Edit</button>
@@ -59,7 +59,7 @@ const Todo = (props) => {
                     style={editMode}
                     className={styles.editInput}
                     placeholder="change ?"/>
-                <button onClick={clickChange} style={editMode}> Change</button>
+                <button className={styles.editBTN} onClick={clickChange} style={editMode}>Change</button>
             </li>
         </div>
     );

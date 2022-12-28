@@ -15,7 +15,10 @@
       font-weight: bold;
       letter-spacing: 1px;
       color: #fff;
+    }
 
+    .label-active {
+      text-decoration: line-through;
     }
 
     .taskBTN {
@@ -51,10 +54,29 @@
     }
 
     .editInput {
-      padding: 5px 10px;
-      width: 100px;
       border-radius: 5px;
+      margin-top: 20px;
+      border: 1px solid #e0e1dd;
+      padding: 8px 10px;
       outline: none;
+      width: 100px;
+    }
+
+    .editBTN {
+      margin-left: 20px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: none;
+      color: #e0e1dd;
+      background-color: #1b263b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 15px;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #313d59;
+      }
     }
   }
 }
