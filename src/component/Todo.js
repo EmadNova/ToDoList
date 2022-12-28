@@ -36,16 +36,30 @@ const Todo = (props) => {
         editMode.display = "none"
     }
 
+    const clickChange = (e) => {
+        e.preventDefault()
+
+        setEditing(false);
+
+    }
+
     return (
         <div className={styles.containerTask}>
             <li>
                 <input type="checkbox"/>
                 <label>{props.name}</label>
                 <div className={styles.taskBTN} style={viewMode}>
-                    <button onClick={editHandler} >Edit</button>
+                    <button onClick={editHandler}>Edit</button>
                     <button onClick={props.data}>Delete</button>
                 </div>
-                <input type="text" value={props.name} onChange={(e) => props.inputUpdate(e.target.value)} style={editMode} className={styles.editInput} placeholder="Wanna change it ...?" />
+                <input
+                    type="text"
+                    value={props.name}
+                    onChange={(e) => props.inputUpdate(e.target.value)}
+                    style={editMode}
+                    className={styles.editInput}
+                    placeholder="change ?"/>
+                <button onClick={clickChange} style={editMode}> Change</button>
             </li>
         </div>
     );
